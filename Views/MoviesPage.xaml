@@ -39,9 +39,13 @@
             <TextBlock Text="🔍 Пошук:" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Gray"/>
             <TextBox x:Name="TxtSearch" Width="250" Height="28" Padding="3" TextChanged="TxtSearch_TextChanged" ToolTip="Шукати за назвою або жанром"/>
         </StackPanel>
-        
+
         <DataGrid x:Name="MoviesGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" 
-                  AlternatingRowBackground="#f9f9f9" Margin="0,0,0,15">
+                  Background="{DynamicResource BackgroundColor}"
+                  RowBackground="{DynamicResource SurfaceColor}"
+                  AlternatingRowBackground="{DynamicResource BackgroundColor}"
+                  Foreground="{DynamicResource TextColor}"
+                  Margin="0,0,0,15">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Назва" Binding="{Binding Title}" Width="*"/>

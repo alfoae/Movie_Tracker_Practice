@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Movie_Tracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Background="{DynamicResource BackgroundColor}">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -19,6 +21,6 @@
             <Button x:Name="BtnSettings" Content="{DynamicResource MenuSettings}" Height="40" Margin="10,5" Click="BtnSettings_Click"/>
         </StackPanel>
 
-        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden" Background="#f0f0f0"/>
+        <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden" Background="Transparent"/>
     </Grid>
 </Window>

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Movie_Tracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Movie_Tracker.Views
 {
@@ -20,32 +23,60 @@ namespace Movie_Tracker.Views
     /// </summary>
     public partial class SettingsPage : Page
     {
+        private bool _isLoaded = false;
+
         public SettingsPage()
         {
             InitializeComponent();
+            LoadCurrentSettingsToUI();
+            _isLoaded = true; // Тепер ми готові відстежувати зміни
         }
 
-        private void CmbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LoadCurrentSettingsToUI()
         {
-            if (CmbLanguage.SelectedItem is ComboBoxItem selectedItem)
+            if (File.Exists("settings.json"))
             {
-                string tag = selectedItem.Tag.ToString();
+                var json = File.ReadAllText("settings.json");
+                var settings = JsonSerializer.Deserialize<AppSettings>(json);
 
-                ResourceDictionary dict = new ResourceDictionary();
-
-                switch (tag)
+                // Виставляємо мову в ComboBox по Tag
+                foreach (ComboBoxItem item in CmbLanguage.Items)
                 {
-                    case "EN":
-                        dict.Source = new Uri("Resources/Locales/LangEN.xaml", UriKind.Relative);
+                    if (item.Tag.ToString() == settings.Language)
+                    {
+                        CmbLanguage.SelectedItem = item;
                         break;
-                    case "UA":
-                    default:
-                        dict.Source = new Uri("Resources/Locales/LangUA.xaml", UriKind.Relative);
-                        break;
+                    }
                 }
 
-                Application.Current.Resources.MergedDictionaries.Clear();
-                Application.Current.Resources.MergedDictionaries.Add(dict);
+                // Виставляємо тему в ComboBox по Tag
+                foreach (ComboBoxItem item in CmbTheme.Items)
+                {
+                    if (item.Tag.ToString() == settings.Theme)
+                    {
+                        CmbTheme.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // ОСЬ ЦЕЙ МЕТОД, ЯКОГО ТОБІ НЕ ВИСТАЧАЛО:
+        private void SettingChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!_isLoaded) return;
+
+            // Отримуємо вибрані об'єкти (ComboBoxItem)
+            var selectedLang = CmbLanguage.SelectedItem as ComboBoxItem;
+            var selectedTheme = CmbTheme.SelectedItem as ComboBoxItem;
+
+            if (selectedLang != null && selectedTheme != null)
+            {
+                string lang = selectedLang.Tag.ToString();   // Буде "UA" або "EN"
+                string theme = selectedTheme.Tag.ToString(); // Буде "Light" або "Dark"
+
+                // Застосовуємо налаштування через App.xaml.cs
+                ((App)Application.Current).ApplySettings(lang, theme);
             }
         }
     }

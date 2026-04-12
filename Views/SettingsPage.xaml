@@ -11,11 +11,17 @@
     <StackPanel Margin="20">
         <TextBlock Text="{DynamicResource SettingsTitle}" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
 
-        <TextBlock Text="{DynamicResource SelectLanguage}" FontSize="14" Foreground="Gray" Margin="0,0,0,5"/>
-
-        <ComboBox x:Name="CmbLanguage" Width="200" HorizontalAlignment="Left" Height="30" SelectionChanged="CmbLanguage_SelectionChanged">
+        <TextBlock Text="{DynamicResource SelectLanguage}" Margin="0,10,0,5"/>
+        <ComboBox x:Name="CmbLanguage" Width="200" HorizontalAlignment="Left" SelectionChanged="SettingChanged">
             <ComboBoxItem Content="Українська" Tag="UA"/>
             <ComboBoxItem Content="English" Tag="EN"/>
         </ComboBox>
+
+        <TextBlock Text="Тема оформлення:" Margin="0,20,0,5" Foreground="Gray"/>
+        <ComboBox x:Name="CmbTheme" Width="200" HorizontalAlignment="Left" SelectionChanged="SettingChanged">
+            <ComboBoxItem Content="Світла" Tag="Light"/>
+            <ComboBoxItem Content="Темна" Tag="Dark"/>
+        </ComboBox>
     </StackPanel>
+
 </Page>

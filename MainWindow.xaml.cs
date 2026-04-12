@@ -19,11 +19,17 @@ namespace Movie_Tracker
         public MainWindow()
         {
             InitializeComponent();
-
+            MainFrame.Navigate(new MoviesPage());
         }
 
+        private void BtnMovies_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MoviesPage());
+        }
 
-
-
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Сторінка налаштувань ще в розробці!");
+        }
     }
 }

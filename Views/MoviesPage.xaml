@@ -11,6 +11,7 @@
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -34,8 +35,14 @@
             <Button Content="Додати фільм" Width="100" Height="28" VerticalAlignment="Bottom" Click="BtnAdd_Click"/>
         </StackPanel>
 
-        <DataGrid x:Name="MoviesGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,5" VerticalAlignment="Top" Panel.ZIndex="1">
+            <TextBlock Text="🔍 Пошук:" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Gray"/>
+            <TextBox x:Name="TxtSearch" Width="250" Height="28" Padding="3" TextChanged="TxtSearch_TextChanged" ToolTip="Шукати за назвою або жанром"/>
+        </StackPanel>
+        
+        <DataGrid x:Name="MoviesGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" 
                   AlternatingRowBackground="#f9f9f9" Margin="0,0,0,15">
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Назва" Binding="{Binding Title}" Width="*"/>
                 <DataGridTextColumn Header="Рік" Binding="{Binding Year}" Width="80"/>
@@ -44,7 +51,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="💾 Зберегти зміни" Width="150" Height="30" Margin="0,0,15,0" Click="BtnSave_Click"/>
             <Button Content="🗑 Видалити вибране" Width="150" Height="30" Foreground="Red" Click="BtnDelete_Click"/>
         </StackPanel>

@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Movie_Tracker
 {
@@ -94,6 +95,28 @@ namespace Movie_Tracker
             else
             {
                 MessageBox.Show("Оберіть фільм для видалення!", "Увага", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filterText = TxtSearch.Text.ToLower();
+
+            ICollectionView view = System.Windows.Data.CollectionViewSource.GetDefaultView(MoviesGrid.ItemsSource);
+
+            if (string.IsNullOrWhiteSpace(filterText))
+            {
+                view.Filter = null;
+            }
+            else
+            {
+                view.Filter = item =>
+                {
+                    Movie movie = item as Movie;
+                    if (movie == null) return false;
+
+                    return movie.Title.ToLower().Contains(filterText) || movie.Genre.ToLower().Contains(filterText);
+
+                };
             }
         }
     }

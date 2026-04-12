@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Movie_Tracker.Views;
 
 namespace Movie_Tracker
 {
@@ -29,7 +30,7 @@ namespace Movie_Tracker
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Сторінка налаштувань ще в розробці!");
+            MainFrame.Navigate(new Views.SettingsPage());
         }
     }
 }

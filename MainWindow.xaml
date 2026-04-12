@@ -15,8 +15,8 @@
         <StackPanel Grid.Column="0" Background="#2b2b2b">
             <TextBlock Text="🎬 Movie Tracker" Foreground="White" FontSize="20" FontWeight="Bold" Margin="15,20,15,30" TextAlignment="Center"/>
 
-            <Button x:Name="BtnMovies" Content="Список фільмів" Height="40" Margin="10,5" Click="BtnMovies_Click"/>
-            <Button x:Name="BtnSettings" Content="Налаштування" Height="40" Margin="10,5" Click="BtnSettings_Click"/>
+            <Button x:Name="BtnMovies" Content="{DynamicResource MenuMovies}" Height="40" Margin="10,5" Click="BtnMovies_Click"/>
+            <Button x:Name="BtnSettings" Content="{DynamicResource MenuSettings}" Height="40" Margin="10,5" Click="BtnSettings_Click"/>
         </StackPanel>
 
         <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden" Background="#f0f0f0"/>

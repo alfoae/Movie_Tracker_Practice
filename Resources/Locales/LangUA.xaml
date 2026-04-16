@@ -6,4 +6,22 @@
     <system:String x:Key="MenuSettings">Налаштування</system:String>
     <system:String x:Key="SettingsTitle">Налаштування програми</system:String>
     <system:String x:Key="SelectLanguage">Оберіть мову:</system:String>
+    <system:String x:Key="MenuHistory">Історія</system:String>
+    <system:String x:Key="HistoryTitle">Історія активності</system:String>
+    <system:String x:Key="ThemeLabel">Тема оформлення:</system:String>
+    <system:String x:Key="Dark">Темна</system:String>
+    <system:String x:Key="Light">Світла</system:String>
+    <system:String x:Key="Name">Назва</system:String>
+    <system:String x:Key="Year">Рік</system:String>
+    <system:String x:Key="Genre">Жанр</system:String>
+    <system:String x:Key="Reviewed">переглянуто</system:String>
+    <system:String x:Key="Search:">🔍 Пошук:</system:String>
+    <system:String x:Key="Year:">Рік:</system:String>
+    <system:String x:Key="Genre:">Жанр:</system:String>
+    <system:String x:Key="Movie title:">Назва фільму:</system:String>
+    <system:String x:Key="Add a movie">Додати фільм</system:String>
+    <system:String x:Key="Save changes">💾 Зберегти зміни</system:String>
+    <system:String x:Key="Delete selected">🗑 Видалити обране</system:String>
+    <system:String x:Key="Added">Додано</system:String>
+    <system:String x:Key="Deleted">Видалено</system:String>
 </ResourceDictionary>

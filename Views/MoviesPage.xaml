@@ -18,25 +18,25 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15" VerticalAlignment="Bottom">
             <StackPanel Margin="0,0,10,0">
-                <TextBlock Text="Назва фільму:" FontSize="12" Foreground="Gray"/>
+                <TextBlock Text="{DynamicResource Movie title:}" FontSize="12" Foreground="Gray"/>
                 <TextBox x:Name="TxtTitle" Width="200" Height="28" Padding="3"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,10,0">
-                <TextBlock Text="Рік:" FontSize="12" Foreground="Gray"/>
+                <TextBlock Text="{DynamicResource Year:}" FontSize="12" Foreground="Gray"/>
                 <TextBox x:Name="TxtYear" Width="70" Height="28" Padding="3"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,15,0">
-                <TextBlock Text="Жанр:" FontSize="12" Foreground="Gray"/>
+                <TextBlock Text="{DynamicResource Genre:}" FontSize="12" Foreground="Gray"/>
                 <TextBox x:Name="TxtGenre" Width="120" Height="28" Padding="3"/>
             </StackPanel>
 
-            <Button Content="Додати фільм" Width="100" Height="28" VerticalAlignment="Bottom" Click="BtnAdd_Click"/>
+            <Button Content="{DynamicResource Add a movie}" Width="100" Height="28" VerticalAlignment="Bottom" Click="BtnAdd_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,5" VerticalAlignment="Top" Panel.ZIndex="1">
-            <TextBlock Text="🔍 Пошук:" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Gray"/>
+            <TextBlock Text="{DynamicResource Search:}" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Gray"/>
             <TextBox x:Name="TxtSearch" Width="250" Height="28" Padding="3" TextChanged="TxtSearch_TextChanged" ToolTip="Шукати за назвою або жанром"/>
         </StackPanel>
 
@@ -48,16 +48,16 @@
                   Margin="0,0,0,15">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Назва" Binding="{Binding Title}" Width="*"/>
-                <DataGridTextColumn Header="Рік" Binding="{Binding Year}" Width="80"/>
-                <DataGridTextColumn Header="Жанр" Binding="{Binding Genre}" Width="120"/>
-                <DataGridCheckBoxColumn Header="Переглянуто" Binding="{Binding IsWatched}" Width="100"/>
+                <DataGridTextColumn Header="{DynamicResource Name}" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="{DynamicResource Year}" Binding="{Binding Year}" Width="80"/>
+                <DataGridTextColumn Header="{DynamicResource Genre}" Binding="{Binding Genre}" Width="120"/>
+                <DataGridCheckBoxColumn Header="{DynamicResource Reviewed}" Binding="{Binding IsWatched}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="💾 Зберегти зміни" Width="150" Height="30" Margin="0,0,15,0" Click="BtnSave_Click"/>
-            <Button Content="🗑 Видалити вибране" Width="150" Height="30" Foreground="Red" Click="BtnDelete_Click"/>
+            <Button Content="{DynamicResource Save changes}" Width="150" Height="30" Margin="0,0,15,0" Click="BtnSave_Click"/>
+            <Button Content="{DynamicResource Delete selected}" Width="150" Height="30" Foreground="Red" Click="BtnDelete_Click"/>
         </StackPanel>
     </Grid>
 </Page>

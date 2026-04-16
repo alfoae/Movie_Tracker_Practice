@@ -6,4 +6,25 @@
     <system:String x:Key="MenuSettings">Settings</system:String>
     <system:String x:Key="SettingsTitle">Application Settings</system:String>
     <system:String x:Key="SelectLanguage">Select language:</system:String>
+    <system:String x:Key="MenuHistory">History</system:String>
+    <system:String x:Key="HistoryTitle">Activity History</system:String>
+    <system:String x:Key="ThemeLabel">Theme:</system:String>
+    <system:String x:Key="Dark">Dark</system:String>
+    <system:String x:Key="Light">Light</system:String>
+    <system:String x:Key="Name">Name</system:String>
+    <system:String x:Key="Year">Year</system:String>
+    <system:String x:Key="Genre">Genre</system:String>
+    <system:String x:Key="Reviewed">Reviewed</system:String>
+    <system:String x:Key="Search:">🔍 Search:</system:String>
+    <system:String x:Key="Year:">Year:</system:String>
+    <system:String x:Key="Genre:">Genre:</system:String>
+    <system:String x:Key="Movie title:">Movie title:</system:String>
+    <system:String x:Key="Add a movie">Add a movie</system:String>
+    <system:String x:Key="Save changes">💾 Save changes</system:String>
+    <system:String x:Key="Delete selected">🗑 Delete selected</system:String>
+    <system:String x:Key="Added">Added</system:String>
+    <system:String x:Key="Deleted">Deleted</system:String>
+
+
+    
 </ResourceDictionary>

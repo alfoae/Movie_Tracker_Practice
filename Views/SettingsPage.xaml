@@ -17,10 +17,10 @@
             <ComboBoxItem Content="English" Tag="EN"/>
         </ComboBox>
 
-        <TextBlock Text="Тема оформлення:" Margin="0,20,0,5" Foreground="Gray"/>
+        <TextBlock Text="{DynamicResource ThemeLabel}" Margin="0,20,0,5" Foreground="Gray"/>
         <ComboBox x:Name="CmbTheme" Width="200" HorizontalAlignment="Left" SelectionChanged="SettingChanged">
-            <ComboBoxItem Content="Світла" Tag="Light"/>
-            <ComboBoxItem Content="Темна" Tag="Dark"/>
+            <ComboBoxItem Content="{DynamicResource Light}" Tag="Light"/>
+            <ComboBoxItem Content="{DynamicResource Dark}" Tag="Dark"/>
         </ComboBox>
     </StackPanel>
 

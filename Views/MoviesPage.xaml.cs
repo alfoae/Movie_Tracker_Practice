@@ -1,7 +1,9 @@
-﻿using MovieTracker.Models;
+﻿using Movie_Tracker.Models;
+using MovieTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,7 +18,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
 
 namespace Movie_Tracker
 {
@@ -41,13 +42,17 @@ namespace Movie_Tracker
             if (File.Exists(dataFile))
             {
                 string json = File.ReadAllText(dataFile);
-                movies = JsonSerializer.Deserialize<ObservableCollection<Movie>>(json);
+
+                if (!string.IsNullOrWhiteSpace(json))
+                {
+                    movies = JsonSerializer.Deserialize<ObservableCollection<Movie>>(json);
+                }
             }
-            else
+
+            if (movies == null)
             {
                 movies = new ObservableCollection<Movie>();
-
-                movies.Add(new Movie("Ласкаво просимо", DateTime.Now.Year, "Інфо", false));
+                new Movie("Ласкаво просимо", DateTime.Now.Year, "Інфо", false);
             }
         }
 
@@ -81,6 +86,17 @@ namespace Movie_Tracker
             Movie newMovie = new Movie(TxtTitle.Text, parsedYear, TxtGenre.Text);
             movies.Add(newMovie);
 
+            App.HistoryProvider.Add(new MovieHistory
+            {
+                Title = newMovie.Title,
+                Year = parsedYear,
+                Genre = TxtGenre.Text,
+                AddedAt = DateTime.Now,
+                IsWatched = false
+            });
+
+            App.SaveHistory();
+
             TxtTitle.Clear();
             TxtYear.Clear();
             TxtGenre.Clear();
@@ -90,11 +106,18 @@ namespace Movie_Tracker
         {
             if (MoviesGrid.SelectedItem is Movie selectedMovie)
             {
+                var hist = App.HistoryProvider.FirstOrDefault(h => h.Title == selectedMovie.Title && h.DeletedAt == null);
+                if (hist != null)
+                {
+                    hist.DeletedAt = DateTime.Now;
+                }
+
                 movies.Remove(selectedMovie);
+                App.SaveHistory();
             }
             else
             {
-                MessageBox.Show("Оберіть фільм для видалення!", "Увага", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Оберіть фільм для видалення!", "Увага", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -119,5 +142,8 @@ namespace Movie_Tracker
                 };
             }
         }
+
+
+
     }
 }

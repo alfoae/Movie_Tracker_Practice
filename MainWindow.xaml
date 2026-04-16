@@ -19,6 +19,7 @@
 
             <Button x:Name="BtnMovies" Content="{DynamicResource MenuMovies}" Height="40" Margin="10,5" Click="BtnMovies_Click"/>
             <Button x:Name="BtnSettings" Content="{DynamicResource MenuSettings}" Height="40" Margin="10,5" Click="BtnSettings_Click"/>
+            <Button Content="{DynamicResource MenuHistory}" Height="40" Margin="10,5" Click="BtnHistory_Click"/>
         </StackPanel>
 
         <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden" Background="Transparent"/>

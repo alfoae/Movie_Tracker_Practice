@@ -32,5 +32,10 @@ namespace Movie_Tracker
         {
             MainFrame.Navigate(new Views.SettingsPage());
         }
+
+        private void BtnHistory_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new HistoryPage());
+        }
     }
 }
